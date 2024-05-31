@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Farmer>
+
+@{
+    ViewData["Title"] = "Farmers";
+}
+
+<h1>Farmers</h1>
+
+<p>
+    <a asp-action="AddFarmer">Add New Farmer</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var farmer in Model)
+        {
+            <tr>
+                <td>@farmer.Name</td>
+                <td>@farmer.Email</td>
+                <td>@farmer.PhoneNumber</td>
+                <td>
+                    <a asp-action="ViewProducts" asp-route-farmerId="@farmer.Id">View Products</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

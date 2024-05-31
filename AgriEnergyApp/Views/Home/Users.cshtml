@@ -1,0 +1,29 @@
+﻿@model List<UserRolesViewModel>
+
+<h2>User Roles</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Email</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>               
+                <td>@user.Email</td>
+                <td>@user.Roles</td>
+                <td>
+                    @if (user.Roles.Contains("farmer"))
+                    {
+                        <a asp-controller="Products" asp-action="ProductsByFarmer" asp-route-farmerId="@user.UserId" class="btn btn-primary">View Products</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
